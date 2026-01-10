@@ -1,0 +1,72 @@
+/* src/styles/theme.css */
+
+/* 1) Semantic tokens (themeable) */
+:root {
+  --app-bg: #0b0c10;
+  --app-surface: #11131a;
+  --app-card: #151827;
+  --app-fg: #e8eaf2;
+  --app-muted: #9aa3b2;
+  --app-border: rgba(255, 255, 255, 0.10);
+
+  --app-primary: #6d5efc;
+  --app-primary-fg: #0b0c10;
+
+  --app-accent: #22c55e;
+  --app-danger: #ef4444;
+  --app-warning: #f59e0b;
+
+  /* Radii + shadows as semantic primitives */
+  --app-radius-sm: 8px;
+  --app-radius-md: 12px;
+  --app-radius-lg: 16px;
+  --app-radius-xl: 20px;
+
+  --app-shadow-card: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Optional: light theme scaffold (only if you want it now) */
+html[data-theme="light"] {
+  --app-bg: #ffffff;
+  --app-surface: #f6f7fb;
+  --app-card: #ffffff;
+  --app-fg: #0b1020;
+  --app-muted: #5b6475;
+  --app-border: rgba(11, 16, 32, 0.10);
+
+  --app-primary: #4f46e5;
+  --app-primary-fg: #ffffff;
+
+  --app-accent: #16a34a;
+  --app-danger: #dc2626;
+  --app-warning: #d97706;
+
+  --app-shadow-card: 0 10px 30px rgba(11, 16, 32, 0.12);
+}
+
+/* 2) Tailwind theme variables (generate utilities) */
+@theme inline {
+  /* Colors -> enables bg-*, text-*, border-* utilities */
+  --color-bg: var(--app-bg);
+  --color-surface: var(--app-surface);
+  --color-card: var(--app-card);
+  --color-fg: var(--app-fg);
+  --color-muted: var(--app-muted);
+  --color-border: var(--app-border);
+
+  --color-primary: var(--app-primary);
+  --color-primary-fg: var(--app-primary-fg);
+
+  --color-accent: var(--app-accent);
+  --color-danger: var(--app-danger);
+  --color-warning: var(--app-warning);
+
+  /* Radius -> enables rounded-sm/md/lg/xl utilities */
+  --radius-sm: var(--app-radius-sm);
+  --radius-md: var(--app-radius-md);
+  --radius-lg: var(--app-radius-lg);
+  --radius-xl: var(--app-radius-xl);
+
+  /* Shadow -> enables shadow-card utility */
+  --shadow-card: var(--app-shadow-card);
+}
