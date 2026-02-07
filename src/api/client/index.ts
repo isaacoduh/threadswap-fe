@@ -1,7 +1,11 @@
 import axios from 'axios'
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://threadswap-backend-production.up.railway.app/api/v1';
+
+
+
 export const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+    baseURL: API_BASE_URL,
     timeout: 30_000
 });
 
