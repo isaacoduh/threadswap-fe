@@ -46,14 +46,15 @@ function UserMenu() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [open]);
 
-  const initials = user?.fullName
-    ? user.fullName
-        .split(" ")
-        .map((n) => n[0])
-        .join("")
-        .toUpperCase()
-        .slice(0, 2)
-    : user?.email?.[0]?.toUpperCase() || "U";
+  // const initials = user?.fullName
+  //   ? user.fullName
+  //       .split(" ")
+  //       .map((n) => n[0])
+  //       .join("")
+  //       .toUpperCase()
+  //       .slice(0, 2)
+  //   : user?.email?.[0]?.toUpperCase() || "U";
+  const initials = user?.email?.[0]?.toUpperCase()
 
   return (
     <div ref={menuRef} className="relative">
@@ -74,9 +75,9 @@ function UserMenu() {
         <div className="absolute right-0 top-full z-50 mt-2 min-w-[200px] overflow-hidden rounded-xl border border-border bg-card py-1 shadow-lg">
           {/* User info */}
           <div className="border-b border-border px-4 py-3">
-            <p className="truncate text-sm font-semibold">
+            {/* <p className="truncate text-sm font-semibold">
               {user?.fullName || "User"}
-            </p>
+            </p> */}
             <p className="truncate text-xs text-muted-foreground">
               {user?.email}
             </p>
