@@ -4,7 +4,8 @@ const PUBLIC_PATHS = [
     '/login',
     '/signup',
     '/',
-    '/search'
+    '/search',
+    '/register'
 ]
 
 function isPublicPath(pathname: string) {
