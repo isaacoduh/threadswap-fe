@@ -69,9 +69,10 @@ export const listingsApi = {
 
     // GET /api/v1/users/:userId/listings
     getByUser: async (userId: string, filters?: ListingFilters): Promise<GetListingsResponse> => {
-        const { data } = await api.get<GetListingsResponse>(`/users/${userId}/listings`, {
+        const { data } = await api.get<GetListingsResponse>(`/listings/users/${userId}/listings`, {
             params: filters,
         });
         return data;
     },
+
 }
