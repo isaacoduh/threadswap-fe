@@ -20,6 +20,10 @@ const nextConfig: NextConfig = {
         hostname: "YOUR-CDN-OR-BUCKET-DOMAIN",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "threadswap-dev-isaac-9080d.s3.eu-west-2.amazonaws.com",
+      },
     ],
   }
 };
