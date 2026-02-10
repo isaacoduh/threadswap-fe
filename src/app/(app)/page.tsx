@@ -1,7 +1,9 @@
 'use client'
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Header } from "@/components/layout/Header";
+import { HeroBanner } from "@/features/home/components/HeroBanner";
 
 export default function HomePage() {
   const [searchValue, setSearchValue] = useState("");
@@ -13,9 +15,9 @@ export default function HomePage() {
         searchValue={searchValue}
         onSearchChange={setSearchValue}
       />
-      <div className="p-4">
-        {/* Your home feed content */}
-        <h2 className="text-lg font-semibold">Welcome to ThreadSwap</h2>
+      <div className="p-6">
+        {/* Hero */}
+        <HeroBanner />
       </div>
     </>
   );
