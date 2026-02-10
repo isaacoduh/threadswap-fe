@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ListingQuickActions } from "./ListingQuickActions";
+import { getListingImageUrl } from "@/features/listings/utils/image";
 import type { Listing } from "@/features/listings/types";
 
 const STATUS_BADGE: Record<string, { label: string; className: string }> = {
@@ -19,16 +20,9 @@ interface ListingCardProps {
   showActions?: boolean;
 }
 
-// Get the first displayable image URL
-function getImageUrl(listing: Listing): string | null {
-  const img = listing.images?.[0];
-  if (!img) return null;
-  return img.url || null;
-}
-
 export function ListingCard({ listing, showActions = true }: ListingCardProps) {
   const badge = STATUS_BADGE[listing.status] || STATUS_BADGE.ACTIVE;
-  const imageUrl = getImageUrl(listing);
+  const imageUrl = getListingImageUrl(listing.images?.[0]);
 
   return (
     <div className="group relative overflow-hidden rounded-xl border border-border bg-card transition-shadow hover:shadow-md">
@@ -40,6 +34,7 @@ export function ListingCard({ listing, showActions = true }: ListingCardProps) {
               src={imageUrl}
               alt={listing.title}
               fill
+              priority
               className={cn(
                 "object-cover transition-transform duration-300 group-hover:scale-105",
                 listing.status === "SOLD" && "opacity-60"

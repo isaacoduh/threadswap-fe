@@ -15,7 +15,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/features/auth/hooks/useAuth";
-import { ProtectedRoute } from "@/features/auth/components/ProtectedRoute";
 import { useUserListings } from "@/features/listings/hooks/useListings";
 import { ListingCard } from "@/features/listings/components/ListingCard";
 import { ListingRow } from "@/features/listings/components/ListingRow";
@@ -80,7 +79,6 @@ export default function SellPage() {
   };
 
   return (
-    <ProtectedRoute>
     <div className="min-h-screen bg-background pb-safe">
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -267,6 +265,5 @@ export default function SellPage() {
         )}
       </div>
     </div>
-    </ProtectedRoute>
   );
 }

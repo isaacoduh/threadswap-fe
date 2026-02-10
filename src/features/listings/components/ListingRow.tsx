@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ListingQuickActions } from "./ListingQuickActions";
+import { getListingImageUrl } from "@/features/listings/utils/image";
 import type { Listing } from "@/features/listings/types";
 import { Eye } from "lucide-react";
 
@@ -23,12 +24,6 @@ const STATUS_LABEL: Record<string, string> = {
   REMOVED: "Removed",
 };
 
-function getImageUrl(listing: Listing): string | null {
-  const img = listing.images?.[0];
-  if (!img) return null;
-  return img.url || null;
-}
-
 interface ListingRowProps {
   listing: Listing;
 }
@@ -36,7 +31,7 @@ interface ListingRowProps {
 export function ListingRow({ listing }: ListingRowProps) {
   const dot = STATUS_DOT[listing.status] || STATUS_DOT.ACTIVE;
   const label = STATUS_LABEL[listing.status] || listing.status;
-  const imageUrl = getImageUrl(listing);
+  const imageUrl = getListingImageUrl(listing.images?.[0]);
   const createdDate = new Date(listing.createdAt).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "short",
