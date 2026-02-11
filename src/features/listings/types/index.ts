@@ -88,7 +88,7 @@ export interface ListingFilters {
     color?: string;
     search?: string;
     status?: ListingStatus;
-    sortBy?: 'created_at' | 'price' | 'title';
+    sortBy?: 'createdAt' | 'price' | 'title';
     sortOrder?: 'asc' | 'desc';
     page?: number;
     limit?: number;
