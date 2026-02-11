@@ -22,7 +22,7 @@ import { EmptyListings } from "@/features/listings/components/EmptyListings";
 import type { ListingStatus, ListingFilters } from "@/features/listings/types";
 
 type StatusTab = "ALL" | ListingStatus;
-type SortOption = "created_at" | "price" | "title";
+type SortOption = "createdAt" | "price" | "title";
 type ViewMode = "grid" | "list";
 
 const STATUS_TABS: { value: StatusTab; label: string }[] = [
@@ -34,7 +34,7 @@ const STATUS_TABS: { value: StatusTab; label: string }[] = [
 ];
 
 const SORT_OPTIONS: { value: SortOption; label: string }[] = [
-  { value: "created_at", label: "Newest" },
+  { value: "createdAt", label: "Newest" },
   { value: "price", label: "Price" },
   { value: "title", label: "Title" },
 ];
@@ -42,7 +42,7 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
 export default function SellPage() {
   const [activeTab, setActiveTab] = useState<StatusTab>("ALL");
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState<SortOption>("created_at");
+  const [sortBy, setSortBy] = useState<SortOption>("createdAt");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [showSort, setShowSort] = useState(false);
