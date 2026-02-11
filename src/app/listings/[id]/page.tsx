@@ -28,6 +28,7 @@ import { getListingImageUrl } from "@/features/listings/utils/image";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import { CATEGORIES, CONDITIONS } from "@/features/listings/schemas/listing.schema";
 import type { ListingStatus } from "@/features/listings/types";
+import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 
 // ----- Image Gallery
 
@@ -121,6 +122,7 @@ function ImageGallery({images, title}: {images: {key: string, url: string | null
 
 function OwnerActions({listingId, status}: {listingId: string; status: ListingStatus}) {
     const router = useRouter()
+    const [showDeleteDialog, setShowDeleteDialog] = useState(false)
     const { mutate: deleteListing, isPending: isDeleting } = useDeleteListing();
     const { mutate: updateStatus, isPending: isUpdating } = useUpdateListingStatus();
     const isPending = isDeleting || isUpdating;
@@ -130,7 +132,6 @@ function OwnerActions({listingId, status}: {listingId: string; status: ListingSt
     }
 
     const handleDelete = () => {
-        if (!confirm("Are you sure you want to delete this listing? This cannot be undone.")) return;
         deleteListing(listingId, {
         onSuccess: () => router.push("/sell"),
         });
@@ -190,13 +191,24 @@ function OwnerActions({listingId, status}: {listingId: string; status: ListingSt
                     variant="outline"
                     size="sm"
                     className="gap-1.5 rounded-lg text-destructive hover:bg-destructive/10 hover:text-destructive"
-                    onClick={handleDelete}
+                    onClick={() => setShowDeleteDialog(true)}
                     disabled={isPending}
                 >
                     <Trash2 className="h-3.5 w-3.5" />
                     Delete
                 </Button>
             </div>
+            <ConfirmDialog
+                open={showDeleteDialog}
+                onClose={() => setShowDeleteDialog(false)}
+                onConfirm={handleDelete}
+                variant="danger"
+                title="Delete this listing?"
+                description="This will permanently remove your listing and all its images. This cannot be undone."
+                confirmLabel="Delete"
+                cancelLabel="Keep it"
+                loading={isDeleting}
+            />
         </div>
     )
 }
