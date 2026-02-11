@@ -110,7 +110,7 @@ export interface GetListingsResponse {
 
 export interface GetListingResponse {
     ok: boolean;
-    item: Listing;
+    listing: Listing;
 }
 
 export interface UpdateListingResponse {
