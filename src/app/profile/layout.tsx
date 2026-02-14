@@ -1,3 +1,4 @@
+// src/app/profile/layout.tsx
 import type { ReactNode } from "react";
 import { Header } from "@/components/layout/Header";
 

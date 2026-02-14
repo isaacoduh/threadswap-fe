@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Calendar, Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { UserProfile } from "../types";
+import { getAvatarUrl } from "../utils/avatar";
+
 
 interface ProfileHeaderProps {
   profile: UserProfile;
@@ -17,23 +19,19 @@ export function ProfileHeader({ profile, isOwner }: ProfileHeaderProps) {
     month: "long",
     year: "numeric",
   });
+  const avatarSrc = getAvatarUrl(profile.avatar);
+
 
   return (
     <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:gap-6">
       {/* Avatar */}
       <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full sm:h-28 sm:w-28">
-        {profile.avatar?.url ? (
-          <Image
-            src={profile.avatar.url}
-            alt={profile.displayName || "Avatar"}
-            fill
-            className="object-cover"
-            sizes="112px"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-violet-500 to-fuchsia-500 text-2xl font-bold text-white">
-            {initial}
-          </div>
+        {avatarSrc ? (
+            <Image src={avatarSrc} alt={profile.displayName || "Avatar"} fill className="object-cover" sizes="112px" />
+            ) : (
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-violet-500 to-fuchsia-500 text-2xl font-bold text-white">
+                {initial}
+            </div>
         )}
       </div>
 

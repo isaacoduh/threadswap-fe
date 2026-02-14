@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect } from "react";
 import { useParams } from "next/navigation";
 import { Loader2, AlertCircle } from "lucide-react";
 import { useAuth } from "@/features/auth/hooks/useAuth";
+import { useRouter } from "next/navigation";
 import { useUserProfile } from "@/features/profile/hooks/useProfile";
 import { ProfileHeader } from "@/features/profile/components/ProfileHeader";
 import { ProfileStats } from "@/features/profile/components/ProfileStats";
@@ -16,6 +18,7 @@ export default function UserProfilePage() {
 
   const isOwner = !!user && user.id === id;
   const profile = data?.profile;
+
 
   if (isLoading) {
     return (
